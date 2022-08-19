@@ -1,0 +1,34 @@
+github:
+  username: ${{ secrets.JAVA_GITHUB_USERNAME }}
+  token:    ${{ secrets.JAVA_GITHUB_TOKEN }}
+
+codeowners:
+- path:  "*"
+  owner: "@paketo-buildpacks/app-monitoring-maintainers"
+
+package:
+  repositories:   ["index.docker.io/paketobuildpacks/appdynamics","gcr.io/paketo-buildpacks/appdynamics"]
+  register:       true
+  registry_token: ${{ secrets.JAVA_GITHUB_TOKEN }}
+
+docker_credentials:
+  - registry: gcr.io
+    username: _json_key
+    password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+  - registry: docker.io
+    username: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_USERNAME }}
+    password: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_PASSWORD }}
+
+dependencies:
+- id:   appdynamics-java
+  uses: docker://ghcr.io/paketo-buildpacks/actions/cf-java-index-dependency:main
+  with:
+    repository_root: https://download.run.pivotal.io/appdynamics
+- id:   appdynamics-nodejs
+  uses: docker://ghcr.io/paketo-buildpacks/actions/npm-dependency:main
+  with:
+    package: appdynamics
+- id:   appdynamics-php
+  uses: docker://ghcr.io/paketo-buildpacks/actions/cf-java-index-dependency:main
+  with:
+    repository_root: https://download.run.pivotal.io/appdynamics-php
