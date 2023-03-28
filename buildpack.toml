@@ -81,27 +81,27 @@ api = "0.7"
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:22.11.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:23.3.0:*:*:*:*:*:*:*"]
     id = "appdynamics-nodejs"
     name = "AppDynamics NodeJS Agent"
-    purl = "pkg:generic/appdynamics-nodejs-agent@22.11.0?arch=amd64"
-    sha256 = "9fbd11f1b35fa7262637a603c3168ed2043e98250674d36cb484814810f3de98"
+    purl = "pkg:generic/appdynamics-nodejs-agent@23.3.0?arch=amd64"
+    sha256 = "fe11a1895a563d03debe75be3053dcd4234e46c3ea832acd940361b592420605"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-22.11.0.tgz"
-    version = "22.11.0"
+    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.3.0.tgz"
+    version = "23.3.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:php-agent:22.12.1:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:php-agent:23.2.0:*:*:*:*:*:*:*"]
     id = "appdynamics-php"
     name = "AppDynamics PHP Agent"
-    purl = "pkg:generic/appdynamics-php-agent@22.12.1?arch=amd64"
-    sha256 = "00f463c4eeb15e8ad65b1c8f020688d74ab5218c584d785e67950c7a81195363"
+    purl = "pkg:generic/appdynamics-php-agent@23.2.0?arch=amd64"
+    sha256 = "50ad2d9c262fa9a15d58ac1b944d9b72f34c072503284bda9a349f7865e65f50"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://download.run.pivotal.io/appdynamics-php/appdynamics-22.12.1-677.tar.bz2"
-    version = "22.12.1"
+    uri = "https://download.run.pivotal.io/appdynamics-php/appdynamics-23.2.0-684.tar.bz2"
+    version = "23.2.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
