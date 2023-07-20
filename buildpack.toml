@@ -94,14 +94,14 @@ api = "0.7"
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:php-agent:23.4.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:php-agent:23.7.0:*:*:*:*:*:*:*"]
     id = "appdynamics-php"
     name = "AppDynamics PHP Agent"
-    purl = "pkg:generic/appdynamics-php-agent@23.4.0?arch=amd64"
-    sha256 = "ce7c4a3b43c0be79bb4d810a6e64f8e0349baea850b828a2a4ddc4473819a47f"
+    purl = "pkg:generic/appdynamics-php-agent@23.7.0?arch=amd64"
+    sha256 = "bef41e07c72107c1185e81fe1d14e396bfbc3f974dc67a244c96ff73560a58a6"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://download.run.pivotal.io/appdynamics-php/appdynamics-23.4.0-724.tar.bz2"
-    version = "23.4.0"
+    uri = "https://download.run.pivotal.io/appdynamics-php/appdynamics-23.7.0-746.tar.bz2"
+    version = "23.7.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
