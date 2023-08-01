@@ -81,14 +81,14 @@ api = "0.7"
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:23.5.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:23.7.0:*:*:*:*:*:*:*"]
     id = "appdynamics-nodejs"
     name = "AppDynamics NodeJS Agent"
-    purl = "pkg:generic/appdynamics-nodejs-agent@23.5.0?arch=amd64"
-    sha256 = "0c850ee882eef85fa115e9f4e38e615ee500e7ef8bf61544ecca0d19935aa541"
+    purl = "pkg:generic/appdynamics-nodejs-agent@23.7.0?arch=amd64"
+    sha256 = "c8fbc1515b94556eb9f5b9de5e0455879837263453c70d2c3557c9e37486be4c"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.5.0.tgz"
-    version = "23.5.0"
+    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.7.0.tgz"
+    version = "23.7.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
