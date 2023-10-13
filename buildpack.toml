@@ -86,6 +86,8 @@ api = "0.7"
     name = "AppDynamics NodeJS Agent"
     purl = "pkg:generic/appdynamics-nodejs-agent@23.7.0?arch=amd64"
     sha256 = "c8fbc1515b94556eb9f5b9de5e0455879837263453c70d2c3557c9e37486be4c"
+    source = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.7.0.tgz"
+    source-sha256 = "c8fbc1515b94556eb9f5b9de5e0455879837263453c70d2c3557c9e37486be4c"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
     uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.7.0.tgz"
     version = "23.7.0"
