@@ -81,16 +81,16 @@ api = "0.7"
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:23.10.0:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:24.1.0:*:*:*:*:*:*:*"]
     id = "appdynamics-nodejs"
     name = "AppDynamics NodeJS Agent"
-    purl = "pkg:generic/appdynamics-nodejs-agent@23.10.0?arch=amd64"
-    sha256 = "c329c2b24f5d6d4e915ef2749fe6ad773460d981bb3d7bb9c22c0b67f83f36e4"
-    source = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.10.0.tgz"
-    source-sha256 = "c329c2b24f5d6d4e915ef2749fe6ad773460d981bb3d7bb9c22c0b67f83f36e4"
+    purl = "pkg:generic/appdynamics-nodejs-agent@24.1.0?arch=amd64"
+    sha256 = "21cbcbfc139da730575706bb9115826d21f1e2121302dd89831d81bb33811dde"
+    source = "https://registry.npmjs.org/appdynamics/-/appdynamics-24.1.0.tgz"
+    source-sha256 = "21cbcbfc139da730575706bb9115826d21f1e2121302dd89831d81bb33811dde"
     stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
-    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-23.10.0.tgz"
-    version = "23.10.0"
+    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-24.1.0.tgz"
+    version = "24.1.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
