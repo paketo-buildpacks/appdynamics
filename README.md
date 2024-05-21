@@ -46,6 +46,10 @@ The buildpack optionally accepts the following bindings:
 |----------------------|---------|------------
 |`<dependency-digest>` | `<uri>` | If needed, the buildpack will fetch the dependency with digest `<dependency-digest>` from `<uri>`
 
+## ARM64 Support
+
+This buildpack supports running on ARM64, however, not for all language families. Presently, it supports the Java Agent on ARM64.
+
 ## License
 
 This buildpack is released under version 2.0 of the [Apache License][a].
