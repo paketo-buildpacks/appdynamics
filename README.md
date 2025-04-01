@@ -1,4 +1,4 @@
-# `docker.io/paketobuildpacks/appdynamics`
+# `paketobuildpacks/appdynamics`
 The Paketo Buildpack for AppDynamics is a Cloud Native Buildpack that contributes the [AppDynamics][n] Agent and configures it to
 connect to the service.
 
