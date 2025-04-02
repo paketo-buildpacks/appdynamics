@@ -1,4 +1,7 @@
-# `docker.io/paketobuildpacks/appdynamics`
+# Paketo Buildpack for AppDynamics
+
+## Buildpack ID: `paketo-buildpacks/appdynamics`
+## Registry URLs: `docker.io/paketobuildpacks/appdynamics`
 The Paketo Buildpack for AppDynamics is a Cloud Native Buildpack that contributes the [AppDynamics][n] Agent and configures it to
 connect to the service.
 
