@@ -18,7 +18,7 @@ api = "0.7"
   description = "A Cloud Native Buildpack that contributes the AppDynamics Agent and configures it to connect to the service"
   homepage = "https://github.com/paketo-buildpacks/appdynamics"
   id = "paketo-buildpacks/appdynamics"
-  keywords = ["appdynamics", "agent", "apm", "java", "nodejs"]
+  keywords = ["appdynamics", "agent", "apm", "java"]
   name = "Paketo Buildpack for AppDynamics"
   sbom-formats = ["application/vnd.syft+json", "application/vnd.cyclonedx+json"]
   version = "{{.version}}"
@@ -76,21 +76,6 @@ api = "0.7"
     stacks = ["*"]
     uri = "https://download.run.pivotal.io/appdynamics/appdynamics-25.7.0-37201.tar.gz"
     version = "25.7.0"
-
-    [[metadata.dependencies.licenses]]
-      uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
-
-  [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:nodejs-agent:24.12.0:*:*:*:*:*:*:*"]
-    id = "appdynamics-nodejs"
-    name = "AppDynamics NodeJS Agent"
-    purl = "pkg:generic/appdynamics-nodejs-agent@24.12.0?arch=amd64"
-    sha256 = "693bbf6af74b9044fee0e3a88a1ab86ff5555205987d986092faa8df72c8c9c4"
-    source = "https://registry.npmjs.org/appdynamics/-/appdynamics-24.12.0.tgz"
-    source-sha256 = "693bbf6af74b9044fee0e3a88a1ab86ff5555205987d986092faa8df72c8c9c4"
-    stacks = ["*"]
-    uri = "https://registry.npmjs.org/appdynamics/-/appdynamics-24.12.0.tgz"
-    version = "24.12.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"

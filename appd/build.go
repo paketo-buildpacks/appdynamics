@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2022 the original author or authors.
+ * Copyright 2018-2025 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,20 +81,6 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		for _, be := range bes {
 			result.BOM.Entries = append(result.BOM.Entries, be)
 		}
-	}
-
-	if _, ok, err := pr.Resolve("appdynamics-nodejs"); err != nil {
-		return libcnb.BuildResult{}, fmt.Errorf("unable to resolve appdynamics-nodejs plan entry\n%w", err)
-	} else if ok {
-		dep, err := dr.Resolve("appdynamics-nodejs", "")
-		if err != nil {
-			return libcnb.BuildResult{}, fmt.Errorf("unable to find dependency\n%w", err)
-		}
-
-		na, be := NewNodeJSAgent(context.Application.Path, context.Buildpack.Path, dep, dc)
-		na.Logger = b.Logger
-		result.Layers = append(result.Layers, na)
-		result.BOM.Entries = append(result.BOM.Entries, be)
 	}
 
 	if _, ok, err := pr.Resolve("appdynamics-php"); err != nil {
