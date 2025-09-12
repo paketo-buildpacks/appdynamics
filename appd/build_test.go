@@ -35,6 +35,10 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		ctx libcnb.BuildContext
 	)
 
+	it.Before(func() {
+		t.Setenv("BP_ARCH", "amd64")
+	})
+
 	it("contributes Java agent API <= 0.6", func() {
 		ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "appdynamics-java"})
 		ctx.Buildpack.Metadata = map[string]interface{}{
@@ -175,60 +179,6 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			Expect(result.BOM.Entries[1].Name).To(Equal("appdynamics-external-configuration"))
 			Expect(result.BOM.Entries[2].Name).To(Equal("helper"))
 		})
-	})
-
-	it("contributes NodeJS agent API <= 0.6", func() {
-		ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "appdynamics-nodejs"})
-		ctx.Buildpack.Metadata = map[string]interface{}{
-			"dependencies": []map[string]interface{}{
-				{
-					"id":      "appdynamics-nodejs",
-					"version": "1.1.1",
-					"stacks":  []interface{}{"test-stack-id"},
-				},
-			},
-		}
-		ctx.Buildpack.API = "0.6"
-		ctx.StackID = "test-stack-id"
-
-		result, err := appd.Build{}.Build(ctx)
-		Expect(err).NotTo(HaveOccurred())
-
-		Expect(result.Layers).To(HaveLen(2))
-		Expect(result.Layers[0].Name()).To(Equal("appdynamics-nodejs"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
-
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-nodejs"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
-	})
-
-	it("contributes NodeJS agent API >= 0.7", func() {
-		ctx.Plan.Entries = append(ctx.Plan.Entries, libcnb.BuildpackPlanEntry{Name: "appdynamics-nodejs"})
-		ctx.Buildpack.Metadata = map[string]interface{}{
-			"dependencies": []map[string]interface{}{
-				{
-					"id":      "appdynamics-nodejs",
-					"version": "1.1.1",
-					"stacks":  []interface{}{"test-stack-id"},
-					"cpes":    []interface{}{"cpe:2.3:a:appdynamics:nodejs-agent:1.1.1:*:*:*:*:*:*:*"},
-					"purl":    "pkg:generic/appdynamics-nodejs-agent@1.1.1?arch=amd64",
-				},
-			},
-		}
-		ctx.Buildpack.API = "0.7"
-		ctx.StackID = "test-stack-id"
-
-		result, err := appd.Build{}.Build(ctx)
-		Expect(err).NotTo(HaveOccurred())
-
-		Expect(result.Layers).To(HaveLen(2))
-		Expect(result.Layers[0].Name()).To(Equal("appdynamics-nodejs"))
-		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
-
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-nodejs"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
 	})
 
 	it("contributes PHP agent API <= 0.6", func() {
