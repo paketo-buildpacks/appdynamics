@@ -24,10 +24,6 @@ dependencies:
   uses: docker://ghcr.io/paketo-buildpacks/actions/cf-java-index-dependency:main
   with:
     repository_root: https://download.run.pivotal.io/appdynamics
-- id:   appdynamics-nodejs
-  uses: docker://ghcr.io/paketo-buildpacks/actions/npm-dependency:main
-  with:
-    package: appdynamics
 - id:   appdynamics-php
   uses: docker://ghcr.io/paketo-buildpacks/actions/cf-java-index-dependency:main
   with:
