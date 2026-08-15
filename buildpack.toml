@@ -68,14 +68,14 @@ api = "0.7"
     name = "BP_APPD_EXT_CONF_VERSION"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:appdynamics:java-agent:26.2.1:*:*:*:*:*:*:*"]
+    cpes = ["cpe:2.3:a:appdynamics:java-agent:26.7.0:*:*:*:*:*:*:*"]
     id = "appdynamics-java"
     name = "AppDynamics Java Agent"
-    purl = "pkg:generic/appdynamics-java-agent@26.2.1"
-    sha256 = "1f5956d24472adc0c3040ede5c3e2db6efcd8c33190b72ad1985e99f14069484"
+    purl = "pkg:generic/appdynamics-java-agent@26.7.0"
+    sha256 = "b528cd5940cccdfc07fbe3750962c04c949cda06be839d91a268b10d1a733b4b"
     stacks = ["*"]
-    uri = "https://download.run.pivotal.io/appdynamics/appdynamics-26.2.1-37810.tar.gz"
-    version = "26.2.1"
+    uri = "https://download.run.pivotal.io/appdynamics/appdynamics-26.7.0-38091.tar.gz"
+    version = "26.7.0"
 
     [[metadata.dependencies.licenses]]
       uri = "https://docs.appdynamics.com/display/PRO45/License+Entitlements+and+Restrictions"
