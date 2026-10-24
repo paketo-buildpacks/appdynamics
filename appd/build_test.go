@@ -60,9 +60,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers[0].Name()).To(Equal("appdynamics-java"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
+		Expect(result.BOM.Entries).To(HaveLen(2))                        //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java")) //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))           //nolint:staticcheck // hold off on the BOM migration for now
 	})
 
 	it("contributes Java agent API >= 0.7", func() {
@@ -88,9 +88,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers[0].Name()).To(Equal("appdynamics-java"))
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
+		Expect(result.BOM.Entries).To(HaveLen(2))                        //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java")) //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))           //nolint:staticcheck // hold off on the BOM migration for now
 	})
 
 	context("$BP_APPD_EXT_CONF_URI", func() {
@@ -136,10 +136,10 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			}))
 			Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 
-			Expect(result.BOM.Entries).To(HaveLen(3))
-			Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))
-			Expect(result.BOM.Entries[1].Name).To(Equal("appdynamics-external-configuration"))
-			Expect(result.BOM.Entries[2].Name).To(Equal("helper"))
+			Expect(result.BOM.Entries).To(HaveLen(3))                                          //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))                   //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[1].Name).To(Equal("appdynamics-external-configuration")) //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[2].Name).To(Equal("helper"))                             //nolint:staticcheck // hold off on the BOM migration for now
 		})
 
 		it("contributes extensions when $BP_APPD_EXT_CONF_URI is set API >= 0.7", func() {
@@ -174,10 +174,10 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 			}))
 			Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 
-			Expect(result.BOM.Entries).To(HaveLen(3))
-			Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))
-			Expect(result.BOM.Entries[1].Name).To(Equal("appdynamics-external-configuration"))
-			Expect(result.BOM.Entries[2].Name).To(Equal("helper"))
+			Expect(result.BOM.Entries).To(HaveLen(3))                                          //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-java"))                   //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[1].Name).To(Equal("appdynamics-external-configuration")) //nolint:staticcheck // hold off on the BOM migration for now
+			Expect(result.BOM.Entries[2].Name).To(Equal("helper"))                             //nolint:staticcheck // hold off on the BOM migration for now
 		})
 	})
 
@@ -203,9 +203,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-php"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
+		Expect(result.BOM.Entries).To(HaveLen(2))                       //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-php")) //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))          //nolint:staticcheck // hold off on the BOM migration for now
 	})
 
 	it("contributes PHP agent API >= 0.7", func() {
@@ -232,9 +232,9 @@ func testBuild(t *testing.T, context spec.G, it spec.S) {
 		Expect(result.Layers[1].Name()).To(Equal("helper"))
 		Expect(result.Layers[1].(libpak.HelperLayerContributor).Names).To(Equal([]string{"properties"}))
 
-		Expect(result.BOM.Entries).To(HaveLen(2))
-		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-php"))
-		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))
+		Expect(result.BOM.Entries).To(HaveLen(2))                       //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[0].Name).To(Equal("appdynamics-php")) //nolint:staticcheck // hold off on the BOM migration for now
+		Expect(result.BOM.Entries[1].Name).To(Equal("helper"))          //nolint:staticcheck // hold off on the BOM migration for now
 	})
 
 }

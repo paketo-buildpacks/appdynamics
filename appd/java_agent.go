@@ -42,7 +42,7 @@ type JavaAgent struct {
 	Logger                          bard.Logger
 }
 
-func NewJavaAgent(buildpackPath string, agentDependency libpak.BuildpackDependency, configurationResolver libpak.ConfigurationResolver, externalConfigurationDependency *libpak.BuildpackDependency, cache libpak.DependencyCache) (JavaAgent, []libcnb.BOMEntry) {
+func NewJavaAgent(buildpackPath string, agentDependency libpak.BuildpackDependency, configurationResolver libpak.ConfigurationResolver, externalConfigurationDependency *libpak.BuildpackDependency, cache libpak.DependencyCache) (JavaAgent, []libcnb.BOMEntry) { //nolint:staticcheck // hold off on the BOM migration for now
 
 	dependencies := []libpak.BuildpackDependency{agentDependency}
 
@@ -65,14 +65,14 @@ func NewJavaAgent(buildpackPath string, agentDependency libpak.BuildpackDependen
 		),
 	}
 
-	var bomEntries []libcnb.BOMEntry
-	entry := agentDependency.AsBOMEntry()
+	var bomEntries []libcnb.BOMEntry      //nolint:staticcheck // hold off on the BOM migration for now
+	entry := agentDependency.AsBOMEntry() //nolint:staticcheck // hold off on the BOM migration for now
 	entry.Metadata["layer"] = j.Name()
 	entry.Launch = true
 	bomEntries = append(bomEntries, entry)
 
 	if externalConfigurationDependency != nil {
-		entry := externalConfigurationDependency.AsBOMEntry()
+		entry := externalConfigurationDependency.AsBOMEntry() //nolint:staticcheck // hold off on the BOM migration for now
 		entry.Metadata["layer"] = j.Name()
 		entry.Launch = true
 		bomEntries = append(bomEntries, entry)
@@ -126,11 +126,11 @@ func (j JavaAgent) ContributeAgent(layer libcnb.Layer) error {
 	if err != nil {
 		return fmt.Errorf("unable to get dependency %s\n%w", j.AgentDependency.ID, err)
 	}
-	defer artifact.Close()
+	defer func() { _ = artifact.Close() }()
 
 	j.Logger.Bodyf("Expanding to %s", layer.Path)
 
-	if err := crush.ExtractZip(artifact, layer.Path, 0); err != nil {
+	if err := crush.Extract(artifact, layer.Path, 0); err != nil { //nolint:staticcheck // hold off on the BOM migration for now
 		return fmt.Errorf("unable to extract to %s\n%w", layer.Path, err)
 	}
 
@@ -154,7 +154,7 @@ func (j JavaAgent) ContributeConfiguration(layer libcnb.Layer) error {
 	if err != nil {
 		return fmt.Errorf("unable to open %s\n%w", file, err)
 	}
-	defer in.Close()
+	defer func() { _ = in.Close() }()
 
 	file = filepath.Join(v, "conf", "app-agent-config.xml")
 	if err := sherpa.CopyFile(in, file); err != nil {
@@ -167,7 +167,7 @@ func (j JavaAgent) ContributeConfiguration(layer libcnb.Layer) error {
 	if err != nil {
 		return fmt.Errorf("unable to open %s\n%w", file, err)
 	}
-	defer in.Close()
+	defer func() { _ = in.Close() }()
 
 	file = filepath.Join(v, "conf", "custom-activity-correlation.xml")
 	if err := sherpa.CopyFile(in, file); err != nil {
@@ -185,7 +185,7 @@ func (j JavaAgent) ContributeConfiguration(layer libcnb.Layer) error {
 	if err != nil {
 		return fmt.Errorf("unable to open %s\n%w", file, err)
 	}
-	defer in.Close()
+	defer func() { _ = in.Close() }()
 
 	file = filepath.Join(v, "conf", "logging", "log4j2.xml")
 	if err := sherpa.CopyFile(in, file); err != nil {
@@ -211,7 +211,7 @@ func (j JavaAgent) ContributeExternalConfiguration(layer libcnb.Layer) error {
 	if err != nil {
 		return fmt.Errorf("unable to get dependency %s\n%w", j.ExternalConfigurationDependency.ID, err)
 	}
-	defer artifact.Close()
+	defer func() { _ = artifact.Close() }()
 
 	j.Logger.Bodyf("Expanding to %s", layer.Path)
 
@@ -227,7 +227,7 @@ func (j JavaAgent) ContributeExternalConfiguration(layer libcnb.Layer) error {
 		return fmt.Errorf("unable to determine version directory\n%w", err)
 	}
 
-	if err := crush.ExtractTarGz(artifact, v, c); err != nil {
+	if err := crush.Extract(artifact, v, c); err != nil { //nolint:staticcheck // hold off on the BOM migration for now
 		return fmt.Errorf("unable to expand external configuration\n%w", err)
 	}
 
