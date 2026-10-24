@@ -17,8 +17,7 @@
 package appd_test
 
 import (
-	"fmt"
-	"io/ioutil"
+	"fmt" //nolint:staticcheck // hold off on the BOM migration for now
 	"os"
 	"path/filepath"
 	"testing"
@@ -45,7 +44,7 @@ func testPHPAgent(t *testing.T, context spec.G, it spec.S) {
 	it.Before(func() {
 		var err error
 
-		ctx.Layers.Path, err = ioutil.TempDir("", "php-agent-layers")
+		ctx.Layers.Path, err = os.MkdirTemp("", "php-agent-layers")
 		Expect(err).NotTo(HaveOccurred())
 
 		executor = &mocks.Executor{}
@@ -78,7 +77,7 @@ func testPHPAgent(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(os.MkdirAll(filepath.Join(layer.Path, "php.ini.d"), 0755)).To(Succeed())
-			Expect(ioutil.WriteFile(filepath.Join(layer.Path, "php.ini.d", "appdynamics_agent.ini"), []byte{}, 0644)).To(Succeed())
+			Expect(os.WriteFile(filepath.Join(layer.Path, "php.ini.d", "appdynamics_agent.ini"), []byte{}, 0644)).To(Succeed())
 
 			layer, err = j.Contribute(layer)
 			Expect(err).NotTo(HaveOccurred())
@@ -99,10 +98,9 @@ func testPHPAgent(t *testing.T, context spec.G, it spec.S) {
 
 			Expect(layer.LaunchEnvironment["PHP_INI_SCAN_DIR.delim"]).To(Equal(string(os.PathListSeparator)))
 			Expect(layer.LaunchEnvironment["PHP_INI_SCAN_DIR.prepend"]).To(Equal(filepath.Join(layer.Path, "php.ini.d")))
-			Expect(ioutil.ReadFile(filepath.Join(layer.Path, "php.ini.d", "appdynamics_agent.ini"))).To(Equal([]byte(fmt.Sprintf(
-				`
+			Expect(os.ReadFile(filepath.Join(layer.Path, "php.ini.d", "appdynamics_agent.ini"))).To(Equal([]byte(`
 agent.controller.ssl.enabled = ${APPDYNAMICS_CONTROLLER_SSL_ENABLED}
-`))))
+`)))
 		})
 	})
 

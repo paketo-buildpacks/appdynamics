@@ -78,9 +78,7 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		ja, bes := NewJavaAgent(context.Buildpack.Path, agentDependency, cr, externalConfigurationDependency, dc)
 		ja.Logger = b.Logger
 		result.Layers = append(result.Layers, ja)
-		for _, be := range bes {
-			result.BOM.Entries = append(result.BOM.Entries, be)
-		}
+		result.BOM.Entries = append(result.BOM.Entries, bes...) //nolint:staticcheck // hold off on the BOM migration for now
 	}
 
 	if _, ok, err := pr.Resolve("appdynamics-php"); err != nil {
@@ -94,13 +92,13 @@ func (b Build) Build(context libcnb.BuildContext) (libcnb.BuildResult, error) {
 		pa, be := NewPHPAgent(dep, dc)
 		pa.Logger = b.Logger
 		result.Layers = append(result.Layers, pa)
-		result.BOM.Entries = append(result.BOM.Entries, be)
+		result.BOM.Entries = append(result.BOM.Entries, be) //nolint:staticcheck // hold off on the BOM migration for now
 	}
 
-	h, be := libpak.NewHelperLayer(context.Buildpack, "properties")
+	h, be := libpak.NewHelperLayer(context.Buildpack, "properties") //nolint:staticcheck // hold off on the BOM migration for now
 	h.Logger = b.Logger
 	result.Layers = append(result.Layers, h)
-	result.BOM.Entries = append(result.BOM.Entries, be)
+	result.BOM.Entries = append(result.BOM.Entries, be) //nolint:staticcheck // hold off on the BOM migration for now
 
 	return result, nil
 }
