@@ -34,8 +34,8 @@ type PHPAgent struct {
 	Logger           bard.Logger
 }
 
-func NewPHPAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (PHPAgent, libcnb.BOMEntry) {
-	contributor, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{Launch: true})
+func NewPHPAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (PHPAgent, libcnb.BOMEntry) { //nolint:staticcheck // hold off on the BOM migration for now
+	contributor, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{Launch: true}) //nolint:staticcheck // hold off on the BOM migration for now
 	return PHPAgent{
 		Executor:         effect.NewExecutor(),
 		LayerContributor: contributor,
@@ -48,7 +48,7 @@ func (p PHPAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 	return p.LayerContributor.Contribute(layer, func(artifact *os.File) (libcnb.Layer, error) {
 		p.Logger.Bodyf("Expanding to %s", layer.Path)
 
-		if err := crush.ExtractTarBz2(artifact, layer.Path, 1); err != nil {
+		if err := crush.Extract(artifact, layer.Path, 1); err != nil { //nolint:staticcheck // hold off on the BOM migration for now
 			return libcnb.Layer{}, fmt.Errorf("unable to expand New Relic\n%w", err)
 		}
 
@@ -94,7 +94,7 @@ func (p PHPAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 		if err != nil {
 			return libcnb.Layer{}, fmt.Errorf("unable to open %s\n%w", file, err)
 		}
-		defer out.Close()
+		defer func() { _ = out.Close() }()
 
 		_, err = out.WriteString("\nagent.controller.ssl.enabled = ${APPDYNAMICS_CONTROLLER_SSL_ENABLED}\n")
 		if err != nil {
